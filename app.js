@@ -25,7 +25,7 @@
   let errT;
   function errRow() {
     const el = $("#err"); clearInterval(errT);
-    const stale = S.last && Date.now() / 1000 - S.last > 600;
+    const stale = S.last && Date.now() / 1000 - S.last > 1200;
     if (!S.fail && !stale) { el.hidden = true; return; }
     let n = 15; const f = () => { el.hidden = false; el.textContent = `Desk offline · retrying in ${n}s · last update ${S.last ? tm(S.last) : "never"}`; if (n > 0) n--; };
     f(); errT = setInterval(f, 1000);
